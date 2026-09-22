@@ -1,0 +1,12 @@
+sequenceDiagram
+        
+        actor Auteur
+
+        Auteur->>Systeme: Accède à la page d'ajout d'article
+        Systeme-->>Auteur: Affiche le formulaire de rédaction
+        
+        Auteur->>Systeme: Remplit les informations (Titre, Catégorie, Statut, Image, Contenu)
+        Auteur->>Systeme: Clique sur "Enregistrer l'article"
+        
+        activate Systeme
+        Systeme-->>Auteur: Redirige vers la liste des articles
