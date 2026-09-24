@@ -5,9 +5,9 @@ header('Content-Type: application/json');
 // 2. Préparer les données (Simulation de BDD)
 $categories = [
     ["id" => 1, "nom" => "Développement Web"],
-    ["id" => 2, "nom" => "Design UI/UX"]
+    ["id" => 2, "nom" => "Design UI/UX"],
+    ["id" => 3, "nom" => "Developpment Moile"]
 ];
 
 // 3. Convertir le tableau PHP en JSON et l'afficher
 echo json_encode($categories);
-?>
