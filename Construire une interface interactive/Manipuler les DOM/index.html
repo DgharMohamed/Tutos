@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Catégories</title>
+  <style>
+    table {
+     border: 1px solid #000; 
+     }
+  </style>
+</head>
+<body>
+
+  <h1>Catégories</h1>
+
+  <button id="btn-show-form">Nouvelle catégorie</button>
+
+  <section id="section-form" hidden>
+    <form id="form-categorie">
+      <label>Nom <input id="cat-nom" type="text"></label>
+      <label>Couleur <input id="cat-couleur" type="color"></label>
+      <button type="submit">Ajouter</button>
+      <button type="button" id="btn-cancel-form">Annuler</button>
+    </form>
+  </section>
+
+  <table>
+    <thead>
+      <tr><th>Nom</th><th>Couleur</th></tr>
+    </thead>
+    <tbody id="table-categories-body"></tbody>
+  </table>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
