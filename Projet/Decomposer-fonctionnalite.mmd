@@ -1,0 +1,14 @@
+flowchart TB
+    A["Gérer les catégories"] --> B["Tâche 1 : cree le MCD"]
+    B --> C["Tâche 2 : Creer base de données"]
+    C --> D@{ label: "Tâche 3 : cree l'API (CRUD)" } & E["Tâche 4 :<br>Cree formulaire HTML"]
+    D --> F@{ label: "Tâche 5 :<br>Connecter le<br>formulaire à l'API" }
+    E --> F
+    F --> G["Tâche 6 : Tester"]
+    G --> H["Tâche 7 : valider"]
+
+    D@{ shape: rect}
+    F@{ shape: rect}
+    style A fill:#00C853
+    style G fill:#E1BEE7
+    style H fill:#BBDEFB
