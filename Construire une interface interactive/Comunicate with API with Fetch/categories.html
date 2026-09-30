@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Categories - Fetch CRUD</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 700px;
+            margin: 30px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+
+        .champ {
+            margin-bottom: 10px;
+        }
+
+        .champ label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+        .couleur {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 6px 12px;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .message.erreur {
+            color: #c00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Gestion des categories</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Couleur</th>
+                <th>icone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <form id="categorieForm">
+        <h2 id="titreFormulaire">Ajouter une categorie</h2>
+
+        <div class="champ">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
+
+        <div class="champ couleur">
+            <label for="couleur">Couleur</label>
+            <input type="color" id="couleur" name="couleur" value="#3b82f6">
+            <span id="apercuCouleur"></span>
+        </div>
+
+        <div class="champ">
+            <label for="icone">icone</label>
+            <input type="text" id="icone" name="icone" placeholder="ex: fa-code">
+        </div>
+
+        <button type="submit" id="btnEnregistrer">Enregistrer</button>
+        <button type="button" id="btnAnnuler">Annuler</button>
+
+        <p id="message" class="message"></p>
+    </form>
+
+    <script src="categories.js"></script>
+</body>
+
+</html>
