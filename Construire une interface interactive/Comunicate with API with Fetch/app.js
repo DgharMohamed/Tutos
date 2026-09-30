@@ -14,6 +14,7 @@ fetch('https://ummahapi.com/api/quran/surahs')
 
     infoSurahs.textContent = `${surahs.length} sourates`;
 
+    
     surahs.forEach(surah => {
       listSurahs.insertAdjacentHTML('beforeend', `
         <li>

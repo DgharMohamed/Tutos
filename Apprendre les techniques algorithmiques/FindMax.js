@@ -6,4 +6,5 @@ for (let i = 0 ; i < Tab.length; i++){
         console.log(Max);
     }
 }
+
 console.log(Max);

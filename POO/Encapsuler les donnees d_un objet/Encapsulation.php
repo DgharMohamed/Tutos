@@ -7,7 +7,6 @@ class Categorie {
         $this->id = $id;
         $this->setNom($nom);
     }
-
     public function getId(): int {
         return $this->id;
     }

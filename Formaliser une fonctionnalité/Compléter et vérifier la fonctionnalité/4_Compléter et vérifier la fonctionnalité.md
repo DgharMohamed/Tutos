@@ -3,6 +3,7 @@ suite du scenario nominal ajout article ..
 Condition (Erreur) : À l’étape 3, l’Auteur ne saisit aucun contenu avant de valider.
 Scénario d’erreur :
 
+
 1. L’Auteur clique sur le bouton “Enregistrer l’article”.
 2. Le système refuse l’enregistrement et affiche le message d’erreur “Le contenu de l’article est obligatoire”.
 **Reprise** : L’Auteur remplit le champ contenu et le scénario reprend à l’étape 3.

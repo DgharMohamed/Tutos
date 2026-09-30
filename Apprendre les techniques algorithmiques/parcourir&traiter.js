@@ -9,7 +9,7 @@ for (let i = 0; i < input.length; i++) {
       break; 
     }
   }
-
+  
   if (isRepeated) {
     let alreadyAdded = false;
     for (let k = 0; k < input1.length; k++) {

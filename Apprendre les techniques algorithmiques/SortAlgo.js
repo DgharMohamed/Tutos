@@ -7,6 +7,7 @@ for(let i = 0 ; i < Tab.length ; i++){
         }
        
     }
+    
     if(valeurMin !== i){
             let temp = Tab[i];
             Tab[i] = Tab[valeurMin];

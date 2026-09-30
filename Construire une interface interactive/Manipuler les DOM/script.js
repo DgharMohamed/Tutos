@@ -15,6 +15,7 @@ const btnShowForm = document.querySelector('#btn-show-form');
     }
     updateInfo();
 
+    
     btnShowForm.addEventListener('click', () => {
       btnShowForm.hidden = true;
       sectionForm.hidden = false;

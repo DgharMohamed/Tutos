@@ -4,7 +4,6 @@ class Humaine{
     public $nom;
     public $age;
 
-
         public function __construct($nomInitial, $ageInitial){
             $this->nom = $nomInitial;
             $this->age = $ageInitial;

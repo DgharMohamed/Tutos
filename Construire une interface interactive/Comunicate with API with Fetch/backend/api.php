@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
+
 $fichier = __DIR__ . '/data.json';
 
 function lireCategories(string $fichier): array

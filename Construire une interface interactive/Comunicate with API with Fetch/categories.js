@@ -74,6 +74,7 @@ function chargerCategories() {
         .catch(err => afficherMessage(`Erreur : ${err.message}`, true));
 }
 
+
 function remplirFormulaire(categorie) {
     ligneEnEdition = categorie.id;
     titreFormulaire.textContent = 'Modifier la categorie';
