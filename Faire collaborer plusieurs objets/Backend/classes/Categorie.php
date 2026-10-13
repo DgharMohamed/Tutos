@@ -1,4 +1,3 @@
-
 <?php
 
 class Categorie
@@ -24,19 +23,19 @@ class Categorie
     {
         return $this->id;
     }
-
     public function getNom(): string
     {
         return $this->nom;
     }
-
     public function getCouleur(): string
     {
         return $this->couleur;
     }
-
     public function getIcone(): string
     {
         return $this->icone;
     }
 }
+
+
+?>

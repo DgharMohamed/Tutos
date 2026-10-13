@@ -11,5 +11,6 @@ class CategorieController
         }
     }
 }
+
 $controller = new CategorieController();
 $controller->listerCategories();

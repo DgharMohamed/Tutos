@@ -1,4 +1,3 @@
-
 <?php
 
 require_once __DIR__ . '/Categorie.php';
@@ -13,3 +12,5 @@ class GestionCategorie
         ];
     }
 }
+
+?>
