@@ -7,12 +7,7 @@ class Categorie
     private string $couleur;
     private string $icone;
 
-    public function __construct(
-        int $id,
-        string $nom,
-        string $couleur,
-        string $icone
-    ) {
+    public function __construct(int $id, string $nom, string $couleur, string $icone) {
         $this->id = $id;
         $this->nom = $nom;
         $this->couleur = $couleur;
