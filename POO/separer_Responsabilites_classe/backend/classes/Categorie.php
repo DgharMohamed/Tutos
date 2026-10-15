@@ -4,6 +4,7 @@ class Categorie {
     private string $nom;
     private string $couleur;
     private string $icone;
+    
 
     public function __construct(int $id, string $nom, string $couleur, string $icone) {
         $this->id = $id;
