@@ -1,41 +1,41 @@
-const formCategorie = document.getElementById('form-categorie');
 const btnSubmit = document.getElementById('btn-submit-form');
+const listeCategories = document.getElementById('liste-categories');
 
-function setLoadingState(isLoading) {
-    btnSubmit.disabled = isLoading;
+btnSubmit.addEventListener('click', () => {
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Chargement...';
 
-    if (isLoading) {
-        btnSubmit.textContent = 'Enregistrement...';
-    } else {
-        btnSubmit.textContent = 'Enregistrer';
-    }
-}
+    const debut = Date.now();
 
-formCategorie.addEventListener('submit', (e) => {
-    e.preventDefault();
+    fetch('api/controllers/CategorieController.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP : ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (!Array.isArray(data)) {
+                throw new Error('Réponse invalide du serveur.');
+            }
 
-    setLoadingState(true);
+            listeCategories.innerHTML = '';
+            data.forEach(categorie => {
+                const li = document.createElement('li');
+                li.textContent = categorie.nom;
+                listeCategories.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error('Erreur :', error);
+            listeCategories.textContent = 'Erreur lors du chargement.';
+        })
+        .finally(() => {
+            const tempsRestant = Math.max(0, 800 - (Date.now() - debut));
 
-    const startTime = Date.now();
-
-    fetch('api/controllers/CategorieController.php', {
-        method: 'POST',
-        body: new FormData(formCategorie)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Succès :", data);
-        formCategorie.reset();
-    })
-    .catch(error => {
-        console.error("Erreur réseau :", error);
-    })
-    .finally(() => {
-        const elapsedTime = Date.now() - startTime;
-        const delay = Math.max(0, 800 - elapsedTime);
-
-        setTimeout(() => {
-            setLoadingState(false);
-        }, delay);
-    });
+            setTimeout(() => {
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = 'Afficher les catégories';
+            }, tempsRestant);
+        });
 });
