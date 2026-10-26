@@ -13,6 +13,7 @@ class CategorieController
                 'nom' => $cat->getNom(),
                 'couleur' => $cat->getCouleur(),
                 'icone' => $cat->getIcone()
+                
             ];
         }
 
