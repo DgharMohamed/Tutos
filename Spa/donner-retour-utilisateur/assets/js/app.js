@@ -1,5 +1,6 @@
 const Button = document.getElementById('button');
 const Form = document.getElementById('form');
+const api_Ur = 'http://localhost:8000/controllers/CategorieController.php';
 
 function setLoadingState(isLoading) {
     
@@ -27,7 +28,7 @@ function showToast(message, type) {
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     setLoadingState(true);
-    fetch('http://localhost:8000/controllers/CategorieController.php', {
+    fetch('api_Url', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
