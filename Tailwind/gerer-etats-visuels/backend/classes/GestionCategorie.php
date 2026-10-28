@@ -1,18 +1,16 @@
 <?php
-    require_once __DIR__ . "/Categorie.php";
+    require_once "Categorie.php";
     class GestionCategorie{
-        private static $dataFile = __DIR__ . "/../../data/categorie.json";
+        private static $dataFile ="../backend/data/categories.json";
 
         public function getAll():array{
             $categories = [];
-            if(file_exists(self::$dataFile)){
                 $jsonData = file_get_contents(self::$dataFile);
-                $categoriesData = json_decode($jsonData, true) ?? [];
+                $categoriesData = json_decode($jsonData, true);
                 foreach($categoriesData as $categorieData){
                     $categorie = new Categorie($categorieData['id'], $categorieData['nom'] , $categorieData['couleur'], $categorieData['icone']);
                     $categories[] = $categorie;
                 }
-            }
             return $categories;
         }
         
@@ -46,7 +44,7 @@
                             'couleur' => $categorie->getCouleur(),
                             'icone' => $categorie->getIcone()
                         ];
-                    }, $categories)));
+                    }, $categories), JSON_PRETTY_PRINT));
                     return true;
                 }
             }
@@ -65,7 +63,7 @@
                             'couleur' => $categorie->getCouleur(),
                             'icone' => $categorie->getIcone()
                         ];
-                    }, $categories)));
+                    }, $categories), JSON_PRETTY_PRINT));
                     return true;
                 }
             }

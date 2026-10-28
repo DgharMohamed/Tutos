@@ -1,41 +1,90 @@
-const btnSubmit = document.getElementById('btn-submit-form');
-const listeCategories = document.getElementById('liste-categories');
+const Button = document.getElementById('button');
+const Form = document.getElementById('form');
+const Spinner = document.getElementById('spinner');
 
-btnSubmit.addEventListener('click', () => {
-    btnSubmit.disabled = true;
-    btnSubmit.textContent = 'Chargement...';
+function setLoadingState(isLoading) {
+    
+    if (isLoading) {
+        Button.disabled = true;
+        Button.textContent = 'Enregistrement…';
+        Spinner.classList.remove('hidden');
+    } else {
+        Button.disabled = false;
+        Button.textContent = 'Enregistrer';
+        Spinner.classList.add('hidden');
+    }
+}
 
-    const debut = Date.now();
+function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    let classes = 'text-white px-4 py-2 rounded shadow-lg mb-2 transition-opacity duration-500';
+    if (type === 'success') {
+        classes += ' bg-green-500';
+    } else {
+        classes += ' bg-red-500';
+    }
+    toast.className = classes;
+    toast.textContent = message;
+    container.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 500);
+    }, 3000);
+}
 
-    fetch('api/controllers/CategorieController.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Erreur HTTP : ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (!Array.isArray(data)) {
-                throw new Error('Réponse invalide du serveur.');
-            }
-
-            listeCategories.innerHTML = '';
-            data.forEach(categorie => {
-                const li = document.createElement('li');
-                li.textContent = categorie.nom;
-                listeCategories.appendChild(li);
+function fetchCategories() {
+    fetch('http://localhost:8000/controllers/CategorieController.php')
+        .then(response =>response.json()).then(data => {
+            console.log("Type :", typeof data);
+            const tableBody = document.getElementById('table-body');
+            tableBody.innerHTML = ''
+            data.forEach(category => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="py-2 px-4 border-b">${category.nom}</td>
+                    <td class="py-2 px-4 border-b">${category.couleur}</td>
+                    <td class="py-2 px-4 border-b">${category.icone}</td>
+                `;
+                tableBody.appendChild(row);
             });
-        })
-        .catch(error => {
-            console.error('Erreur :', error);
-            listeCategories.textContent = 'Erreur lors du chargement.';
-        })
-        .finally(() => {
-            const tempsRestant = Math.max(0, 800 - (Date.now() - debut));
+        }).catch(error => {
+            console.error('Error fetching categories:', error);
+        }) 
+}
 
-            setTimeout(() => {
-                btnSubmit.disabled = false;
-                btnSubmit.textContent = 'Afficher les catégories';
-            }, tempsRestant);
-        });
-});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetchCategories()   
+    Form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            setLoadingState(true);
+            fetch('http://localhost:8000/controllers/CategorieController.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nom: document.getElementById('nom').value,
+                    couleur: document.getElementById('couleur').value,
+                    icone: document.getElementById('icone').value
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                showToast('Categorie ajoutee avec succes!', 'success');
+                fetchCategories() 
+                Form.reset();
+            })
+            .catch(error => {
+                setLoadingState(false);
+                console.error('Error:', error);
+                showToast('Erreur lors de l\'enregistrement', 'error');
+            }).finally(() => {
+                setLoadingState(false);
+            })
+    })
+})

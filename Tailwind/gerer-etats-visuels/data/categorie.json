@@ -1,8 +1,0 @@
-[
-    {"id":1,
-    "nom":"D\u00e9veloppement Web",
-    "couleur":"Bleu","icone":"Code"
-    },
-    {"id":2,"nom":"Design UI\/UX","couleur":"Rose","icone":"Pinceau"},
-    {"id":"3","nom":"Laravel","couleur":"Bleu","icone":"Code"}
-]

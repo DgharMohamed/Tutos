@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nom": "Sport",
+        "couleur": "#FF5733",
+        "icone": "fa fa-futbol"
+    },
+    {
+        "id": 2,
+        "nom": "Musique",
+        "couleur": "#33FF57",
+        "icone": "fa fa-music"
+    },
+    {
+        "id": 3,
+        "nom": "Voyage",
+        "couleur": "#3357FF",
+        "icone": "fa fa-plane"
+    },
+    {
+        "id": 4,
+        "nom": "uyi",
+        "couleur": "#dadbdc",
+        "icone": "fa fa-google"
+    }
+]
